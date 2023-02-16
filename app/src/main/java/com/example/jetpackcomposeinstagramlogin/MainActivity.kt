@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposeinstagramlogin.RetoTwitter.RetoTwitter
+import com.example.jetpackcomposeinstagramlogin.login.LoginViewModel
 import com.example.jetpackcomposeinstagramlogin.ui.theme.JetpackComposeInstagramLoginTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen()
+                    LoginScreen(LoginViewModel())
                 }
             }
         }
