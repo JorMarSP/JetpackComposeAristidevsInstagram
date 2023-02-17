@@ -1,5 +1,6 @@
 package com.example.jetpackcomposeinstagramlogin.login.data.network
 
+import android.util.Log
 import com.example.jetpackcomposeinstagramlogin.core.network.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -9,6 +10,7 @@ class LoginService {
     suspend fun doLogin(user:String, password:String):Boolean{
         return withContext(Dispatchers.IO){
             val response = retrofit.create(LoginClient::class.java).doLogin()
+            Log.i(response.body().toString(), response.toString())
             response.body()?.success ?: false
         }
     }

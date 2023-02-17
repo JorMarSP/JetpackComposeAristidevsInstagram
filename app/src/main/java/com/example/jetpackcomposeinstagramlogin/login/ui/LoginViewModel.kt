@@ -31,7 +31,7 @@ class LoginViewModel: ViewModel() {
         _isLoginEnabled.value = enableLoginEnUnaLinea(email, password)
     }
 
-    fun enableLoginEnUnaLinea(email: String, password: String) =
+    private fun enableLoginEnUnaLinea(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
 
     fun onLoginSelected(){
