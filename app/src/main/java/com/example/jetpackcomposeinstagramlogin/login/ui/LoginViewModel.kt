@@ -7,11 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetpackcomposeinstagramlogin.login.domain.LoginUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel: ViewModel() {
-
-    val loginUseCase = LoginUseCase()
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase): ViewModel() {
 
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
@@ -40,7 +41,7 @@ class LoginViewModel: ViewModel() {
             val result = loginUseCase(email.value!!, password.value!!)
             if (result){
                 //Navegar a la siguiente pantalla
-                Log.i("aris", "result OK")
+                Log.i("aris", "cargo la info")
             }
             _isLoading.value = false
         }

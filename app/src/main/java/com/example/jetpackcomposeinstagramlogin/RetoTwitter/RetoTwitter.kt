@@ -91,19 +91,18 @@ fun CuerpoTwit(modifier: Modifier, dataTwit: DataTwit) {
         Spacer(modifier = Modifier.size(5.dp))
         TwitAndImage(twit, imagen)
         Spacer(modifier = Modifier.size(20.dp))
-        Iconos(Modifier.fillMaxWidth(), Arrangement.Start)
+        Iconos(Arrangement.Start)
         Spacer(modifier = Modifier.size(5.dp))
     }
 }
 
 @Composable
-fun Iconos(modifier: Modifier, arrangement: Arrangement.Horizontal) {
+fun Iconos(arrangement: Arrangement.Horizontal) {
     Row() {
-        Comentarios(horizontalArrangement = Arrangement.Start, modifier = Modifier.weight(1f))
-        Compartido(horizontalArrangement = Arrangement.Start, modifier = Modifier.weight(1f))
-        Like(horizontalArrangement = Arrangement.Start, modifier = Modifier.weight(1f))
+        Comentarios(horizontalArrangement = arrangement, modifier = Modifier.weight(1f))
+        Compartido(horizontalArrangement = arrangement, modifier = Modifier.weight(1f))
+        Like(horizontalArrangement = arrangement, modifier = Modifier.weight(1f))
     }
-
 }
 
 @Composable
@@ -180,7 +179,7 @@ fun ParteSuperior(modifier: Modifier, usuario: String, alias: String, horaTwit: 
         val fechaActual = LocalDateTime.now()
         val fechaTwit = LocalDateTime.parse(horaTwit)
         val diferencia = Duration.between(fechaTwit, fechaActual).toHours()
-        var texto = ""
+        val texto: String
         if (diferencia <= 23) texto = "${diferencia}h" else texto = "${round((diferencia/24).toDouble()).toInt()}d"
         Text(texto, color = Color.LightGray)
         Column(Modifier.weight(1f), horizontalAlignment = Alignment.End) {
